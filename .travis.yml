@@ -4,7 +4,8 @@ dist: focal          # or bionic | xenial | trusty | precise with xenial as defa
 language: shell
 before_script:
   - wget https://github.com/devkitPro/pacman/releases/download/v1.0.2/devkitpro-pacman.amd64.deb
-  - sudo apt install libarchive13 -y
+  - sudo apt-get update
+  - sudo apt-get install libarchive13 -y
   - sudo dpkg -i devkitpro-pacman.amd64.deb
   - export DEVKITPRO=/opt/devkitpro
   - export DEVKITARM=${DEVKITPRO}/devkitARM
