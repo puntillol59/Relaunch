@@ -2,4 +2,14 @@ arch: amd64          # optional, this is default, routes to a full VM
 os: linux            # optional, this is default
 dist: focal          # or bionic | xenial | trusty | precise with xenial as default
 language: shell
+before_script:
+  - wget https://github.com/devkitPro/pacman/releases/download/v1.0.2/devkitpro-pacman.amd64.deb
+  - sudo dpkg -i devkitpro-pacman.amd64.deb
+  - export DEVKITPRO=/opt/devkitpro
+  - export DEVKITARM=${DEVKITPRO}/devkitARM
+  - export DEVKITARM=${DEVKITPRO}/devkitPPC
+  - export PATH=${DEVKITPRO}/tools/bin:$PATH
+  - bash sudo dkp-pacman -Sy
+  - bash sudo dkp-pacman -Syu
+  - bash sudo dkp-pacman -S nds-dev
 script: bash compile-linux.bash
